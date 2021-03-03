@@ -1,0 +1,5 @@
+Override the equals method form the Object class for the Source, Destination classes. The problem should not allow adding the same source or destination twice.
+Instead of using an enum, create dedicated classes for warehouses and factories. Source will become abstract.
+Create a class to describe the solution.
+Implement a simple algorithm for creating a feasible solution to the problem (one that satisfies the supply and demand constraints).
+Write doc comments in your source code and generate the class documentation using javadoc.
