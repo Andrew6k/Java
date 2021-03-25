@@ -1,0 +1,7 @@
+Create a shell that allows reading commands from the keyboard, together with their arguments.
+Represent the commands using classes instead of methods. Use an interface or an abstract class in order to desribe a generic command.
+Implement the commands add, list, save, load, play (create the classes AddCommand, ListCommand, etc.).
+Implement the command report: create (and open) an HTML report representing the content of the catalog.
+Use a template engine such as FreeMarker or Velocity, in order to create the HTML report.
+The application will signal the commands that are not valid using a custom exception.
+The final form of the application will be an executable JAR archive. Identify the generated archive and launch the application from the console, using the JAR.
