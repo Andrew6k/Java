@@ -13,12 +13,15 @@ public class ActorsDAO {
     {
         this.conn=conn;
     }
-    public void find_by_id(int id) throws SQLException {
+    public Actor find_by_id(int id) throws SQLException {
+        Actor found;
         Statement myStatement = conn.createStatement();
         ResultSet myResult = myStatement.executeQuery(String.format("SELECT * FROM actors WHERE id='%d'",id));
         while (myResult.next()) {
             System.out.println("Actor:" + myResult.getString("name") + " " + myResult.getString("birth_date")+ " "+myResult.getInt("height"));
         }
+        found=new Actor(myResult.getInt("id"),myResult.getString("name"),myResult.getString("birth_date"),myResult.getInt("height"));
+        return found;
     }
     public void create(String name,String birthDate,int height) throws SQLException
     {
@@ -39,14 +42,17 @@ public class ActorsDAO {
         */
     }
 
-    public void findByName(String name) throws SQLException
+    public Actor findByName(String name) throws SQLException
     {
+        Actor found;
         Statement myStatement = conn.createStatement();
         ResultSet myResult = myStatement.executeQuery(String.format("SELECT * FROM actors WHERE name='%s'",name));
         while (myResult.next()) {
             System.out.println("Actor:" + myResult.getString("name") + " "+ myResult.getString("birth_date")+ " "+myResult.getInt("height"));
 
         }
+        found=new Actor(myResult.getInt("id"),myResult.getString("name"),myResult.getString("birth_date"),myResult.getInt("height"));
+        return found;
 
     }
 }

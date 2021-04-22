@@ -8,7 +8,7 @@ public class Database {
 
     private static Database db=null;
 
-    public static Connection myconn=null;
+    public  Connection myconn=null;
 
     private Database() throws SQLException {
         try {
@@ -33,11 +33,15 @@ public class Database {
 
     }
 
-    public static Connection Database() throws SQLException {
+    public static Database Database() throws SQLException {
         if(db==null)
         {
             db=new Database();
         }
+        return db;
+    }
+
+    public Connection getConnection() {
         return myconn;
     }
 }

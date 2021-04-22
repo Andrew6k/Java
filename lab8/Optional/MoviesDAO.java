@@ -12,12 +12,15 @@ public class MoviesDAO {
     {
         this.conn=conn;
     }
-    public void find_by_id(int id) throws SQLException{
+    public Movie find_by_id(int id) throws SQLException{
+        Movie found;
         Statement myStatement = conn.createStatement();
         ResultSet myResult = myStatement.executeQuery(String.format("SELECT * FROM movies WHERE id='%d'",id));
         while (myResult.next()) {
             System.out.println("Movie:" + myResult.getString("title") + " " + myResult.getString("release_date"));
         }
+        found=new Movie(myResult.getInt("id"),myResult.getString("name"),myResult.getString("birth_date"),myResult.getInt("score"),myResult.getInt("duration"));
+        return found;
         }
     public void create(String title,int score,String releaseDate,int duration) throws SQLException
     {
@@ -38,14 +41,17 @@ public class MoviesDAO {
         */
     }
 
-    public void findByName(String name) throws SQLException
+    public Movie findByName(String name) throws SQLException
     {
+        Movie found;
         Statement myStatement = conn.createStatement();
         ResultSet myResult = myStatement.executeQuery(String.format("SELECT * FROM movies WHERE title='%s'",name));
         while (myResult.next()) {
             System.out.println("Movie:" + myResult.getString("title") + " "+ myResult.getString("release_date"));
 
         }
+        found=new Movie(myResult.getInt("id"),myResult.getString("name"),myResult.getString("birth_date"),myResult.getInt("score"),myResult.getInt("duration"));
+        return found;
 
     }
 }

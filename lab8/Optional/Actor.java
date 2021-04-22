@@ -20,6 +20,7 @@ public class Actor {
         this.height = height;
     }
 
+
     public Integer getId() {
         return id;
     }

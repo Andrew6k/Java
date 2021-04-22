@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        Connection conn=Database.Database();
+        Connection conn=Database.Database().getConnection();
 
         MoviesDAO movie=new MoviesDAO(conn);
         /*
@@ -17,8 +17,9 @@ public class Main {
         movie.create("Rush",86,"12-11-2013",100);
         movie.create("The Last Samurai",90,"15-06-2003",111);
         */
-        movie.findByName("The Last Samurai");
-        movie.find_by_id(2);
+
+        Movie a=movie.findByName("The Last Samurai");
+        Movie a2=movie.find_by_id(2);
 
         GenresDAO genre=new GenresDAO(conn);
         /*

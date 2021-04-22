@@ -13,12 +13,15 @@ public class DirectorsDAO {
     {
         this.conn=conn;
     }
-    public void find_by_id(int id) throws SQLException {
+    public Director find_by_id(int id) throws SQLException {
+        Director found;
         Statement myStatement = conn.createStatement();
         ResultSet myResult = myStatement.executeQuery(String.format("SELECT * FROM directors WHERE id='%d'",id));
         while (myResult.next()) {
             System.out.println("Director:" + myResult.getString("name") + " " + myResult.getString("birth_date"));
         }
+        found=new Director(myResult.getInt("id"),myResult.getString("name"),myResult.getString("birth_date"),myResult.getInt("height"));
+        return found;
     }
     public void create(String name,String birthDate,int height) throws SQLException
     {
@@ -29,14 +32,17 @@ public class DirectorsDAO {
 
     }
 
-    public void findByName(String name) throws SQLException
+    public Director findByName(String name) throws SQLException
     {
+        Director found;
         Statement myStatement = conn.createStatement();
         ResultSet myResult = myStatement.executeQuery(String.format("SELECT * FROM directors WHERE name='%s'",name));
         while (myResult.next()) {
             System.out.println("Director:" + myResult.getString("name") + " "+ myResult.getString("birth_date"));
 
         }
+        found=new Director(myResult.getInt("id"),myResult.getString("name"),myResult.getString("birth_date"),myResult.getInt("height"));
+        return found;
 
     }
 }
